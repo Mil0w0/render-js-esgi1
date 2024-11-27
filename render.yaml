@@ -1,0 +1,17 @@
+services:
+  - type: web 
+    plan: free
+    name: blueprint-webservice
+    runtime: node
+    repo: https://github.com/Mil0w0/render-js-esgi1
+    buildCommand: "npm i"
+    startCommand: "npm run start"
+    envVars:
+      - key: DATABASE_URL 
+        fromDatabase:
+          name: blueprint-db
+          property: connectionString
+
+databases:
+  - name: blueprint-db 
+    plan: free
